@@ -32,10 +32,10 @@ class Ticker():
         for r in self.result_list:
             bid = int(r["bid"])
             ask = int(r["ask"])
-            if bid < min:
-                min = bid
-            if ask > max:
-                max = ask
+            if ask < min:
+                min = ask
+            if bid > max:
+                max = bid
 
         click.echo(click.style("%-7s%5s%12s%10s%10s" % ("取引所名","買値","売値","スプレッド","24時間の取引高"), fg='white'),nl=True)
         for  index,r in enumerate(self.result_list):
@@ -48,8 +48,8 @@ class Ticker():
                 baseVolume = int(float(r["volume"]))
             # click.echo(click.style("%-10s%13s%10s%10s%15s" % (ex_name_list[index], str(ask) ,str(bid), str(ask - bid), str(baseVolume)), fg='white'),nl=False)
             click.echo(click.style("%-10s" % self.ex_name_list[index], fg='white'),nl=False)
-            click.echo(click.style("%10s" % str(bid), fg='red', bold= (min == bid)),nl=False)
-            click.echo(click.style("%13s" % str(ask), fg='green', bold= (max == ask) ),nl=False)
+            click.echo(click.style("%10s" % str(bid), fg='red', bold= (min == ask)),nl=False)
+            click.echo(click.style("%13s" % str(ask), fg='green', bold= (max == bid) ),nl=False)
             click.echo(click.style("%10s" % str(ask - bid), fg='white'),nl=False)
             click.echo(click.style("%15s" % str(baseVolume), fg='white'),nl=True)
         click.echo(click.style("価格差:%s" % str(max - min),fg='white'),nl=True)
