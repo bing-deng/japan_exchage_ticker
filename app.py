@@ -37,7 +37,7 @@ class Ticker():
             if bid > max:
                 max = bid
 
-        click.echo(click.style("%-7s%5s%12s%10s%10s" % ("取引所名","買値","売値","スプレッド","24時間の取引高"), fg='white'),nl=True)
+        click.echo(click.style("%-7s%5s%12s%10s%10s" % ("取引所名","売値","買値","スプレッド","24時間の取引高"), fg='white'),nl=True)
         for  index,r in enumerate(self.result_list):
             bid = int(r["bid"])
             ask = int(r["ask"])
